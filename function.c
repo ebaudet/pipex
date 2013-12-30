@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 16:37:30 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/30 16:37:30 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/30 20:25:32 by apieropa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strdup(char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
+/*
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	int		ret;
@@ -54,6 +54,18 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	else if (ret > 0)
 		ret = 1 ;
 	return (ret);
+}
+*/
+int			ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t		i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0' && i < n - 1)
+		i++;
+	return (s1[i] - s2[i]);
 }
 
 int		ft_count_c(char *str, char c)

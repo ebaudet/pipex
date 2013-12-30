@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 16:13:18 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/30 16:13:18 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/30 19:38:28 by apieropa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ typedef struct	s_data
 	char		**env;
 }				t_data;
 
+/*
+** A enlever
+*/
+# include <stdio.h>
 /*
 ** xenv.c
 */

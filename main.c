@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 13:48:12 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/30 13:48:12 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/30 20:30:52 by apieropa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_exec(t_data *data, char *cmd)
 	{
 		tmp = ft_strjoin(path[i], cmd);
 		t = access(tmp, X_OK);
+
 		execve(tmp, data->av, data->env);
 		free(tmp);
 		i++;
@@ -36,19 +37,13 @@ int		ft_exec(t_data *data, char *cmd)
 
 void	init_data(int ac, char const *av[], char **env, t_data *data)
 {
-	char	**str;
-
 	data->env = env;
 	data->ac = ac;
 	data->av = (char **)av;
 	data->file1 = ft_strdup((char *)av[1]);
 	data->file2 = ft_strdup((char *)av[4]);
-	str = ft_strsplit((char *)av[2], ' ');
-	data->cmd1 = str;
-	free(str);
-	str = ft_strsplit((char *)av[3], ' ');
-	data->cmd2 = str;
-	free(str);
+	data->cmd1 = ft_strsplit((char *)av[2], ' ');
+	data->cmd2 = ft_strsplit((char *)av[3], ' ');
 }
 
 int		main(int ac, char const *av[])
@@ -59,32 +54,26 @@ int		main(int ac, char const *av[])
 	if (ac == 5)
 	{
 		init_data(ac, av, environ, &data);
-		if (pipe(data.pfd) == -1)
-			exit(1);
+		data.pfd[0] = 3;
+		data.pfd[1] = 4;
 		if ((data.pid = fork()) < 0)
-			exit(2);
-		if (data.pid == 0)
+			exit(0);
+		if (data.pid == 0) /* son */
 		{
 			close(data.pfd[1]);
 			dup2(data.pfd[0], 0);
-			close(data.pfd[0]);
-
 			ft_exec(&data, data.cmd2[0]);
-
-			/*
-			execve("/bin/cmd2", data.cmd2, data->env);
-			execlp(data.cmd2, data.cmd2, data.cmd2_opt, (char *)0);
-			*/
-			exit(3);
+			close(data.pfd[0]);
+			exit(0);
 		}
-		else
+		else if (data.pid > 0) /* father */
 		{
+			wait(0);
 			close(data.pfd[0]);
 			dup2(data.pfd[1], 1);
-			close(data.pfd[1]);
 			ft_exec(&data, data.cmd1[0]);
-			/*execlp(data.cmd1, data.cmd1, data.cmd1_opt, (char *)0);*/
-			exit(4);
+			close(data.pfd[1]);
+			exit(0);
 		}
 	}
 	return (0);
