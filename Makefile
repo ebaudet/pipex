@@ -11,7 +11,11 @@
 #******************************************************************************#
 
 NAME	= pipex
-SRCS	= main.c function.c
+SRCS	+= main.c
+SRCS	+= function.c
+SRCS	+= function2.c
+SRCS	+= xenv.c
+SRCS	+= ft_strsplit.c
 OBJS	= ${SRCS:.c=.o}
 INC		= ./
 FLAGS	= -Wall -Wextra -Werror -pedantic
