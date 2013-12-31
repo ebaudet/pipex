@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 13:48:12 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 16:42:03 by apieropa         ###   ########.fr       */
+/*   Updated: 2013/12/31 17:25:52 by apieropa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int		main(int ac, char const *av[])
 
 int		open_fds(t_data *data)
 {
+	data->file2_fd = open(data->file2, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (access(data->file2, W_OK) == -1)
 		p_err("permission denied: ", data->file2);
-	data->file2_fd = open(data->file2, O_WRONLY | O_TRUNC | O_CREAT, 0644);
 	if (pipe(data->pfd) == -1)
 	{
 		ft_putstr("pipe failed\n");
