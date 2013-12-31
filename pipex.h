@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 16:13:18 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/30 19:38:28 by apieropa         ###   ########.fr       */
+/*   Updated: 2013/12/31 01:48:37 by apieropa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 # ifndef NO_ERR
 #  define NO_ERR 42
@@ -68,7 +69,8 @@ char		**ft_strsplit(char const *s, char c);
 /*
 ** main.c
 */
-int		ft_exec(t_data *data, char *cmd);
+int		ft_exec(t_data *data, char **cmd);
 void	init_data(int ac, char const *av[], char **env, t_data *data);
+void	add_file1_to_cmd1(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ebaudet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/30 13:31:30 by ebaudet           #+#    #+#              #
-#    Updated: 2013/12/30 13:32:02 by ebaudet          ###   ########.fr        #
+#    Updated: 2013/12/31 01:49:34 by apieropa         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,7 @@ SRCS	+= function.c
 SRCS	+= function2.c
 SRCS	+= xenv.c
 SRCS	+= ft_strsplit.c
-OBJS	= ${SRCS:.c=.o}
+OBJS	= $(subst .c,.o,$(SRCS))
 INC		= ./
 FLAGS	= -Wall -Wextra -Werror -pedantic
 

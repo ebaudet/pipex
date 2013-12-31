@@ -6,7 +6,7 @@
 /*   By: apieropa <apieropa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/29 01:31:48 by apieropa          #+#    #+#             */
-/*   Updated: 2013/12/30 20:26:01 by apieropa         ###   ########.fr       */
+/*   Updated: 2013/12/31 01:48:36 by apieropa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**ft_get_path(char **env)
 	int		j;
 
 	tmp = ft_strsplit(ft_getenv(env, "PATH"), ':');
-	i = ft_count_c(*tmp, ':') + 1;
+	i = ft_count_c(ft_getenv(env, "PATH"), ':') + 1;
 	path = (char **)malloc(i * sizeof(*path));
 	path[i] = 0;
 	j = 0;
