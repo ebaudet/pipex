@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 16:13:18 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 16:38:29 by apieropa         ###   ########.fr       */
+/*   Updated: 2013/12/31 18:03:25 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	p_err(char *s1, char *s2);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_putstr(char const *s);
+void	ft_putstr_err(char const *s);
 
 /*
 ** ft_strsplit.c

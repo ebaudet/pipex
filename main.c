@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 13:48:12 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 17:25:52 by apieropa         ###   ########.fr       */
+/*   Updated: 2013/12/31 18:03:29 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		open_fds(t_data *data)
 		p_err("permission denied: ", data->file2);
 	if (pipe(data->pfd) == -1)
 	{
-		ft_putstr("pipe failed\n");
+		ft_putstr_err("pipe failed\n");
 		return (-1);
 	}
 	return (0);

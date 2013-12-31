@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 19:15:05 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 12:52:56 by apieropa         ###   ########.fr       */
+/*   Updated: 2013/12/31 18:03:39 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,17 @@ int		ft_strcmp(const char *s1, const char *s2)
 
 void	p_err(char *s1, char *s2)
 {
-	ft_putstr(s1);
-	ft_putstr(s2);
-	ft_putstr("\n");
+	ft_putstr_err(s1);
+	ft_putstr_err(s2);
+	ft_putstr_err("\n");
 }
 
 void	ft_putstr(char const *s)
 {
 	write(1, s, ft_strlen((char *)s));
+}
+
+void	ft_putstr_err(char const *s)
+{
+	write(2, s, ft_strlen((char *)s));
 }
