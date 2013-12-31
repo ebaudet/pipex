@@ -52,4 +52,3 @@ re: fclean all
 gdb:
 	cc -g $(FLAGS) $(SRC) -o $(NAME)
 	gdb $(NAME)
-

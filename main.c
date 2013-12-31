@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 13:48:12 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 18:03:29 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/31 19:32:03 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ int		main(int ac, char const *av[])
 
 int		open_fds(t_data *data)
 {
+	data->file1_fd = open(data->file1, O_RDONLY);
 	data->file2_fd = open(data->file2, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	if (access(data->file1, F_OK) == -1)
+		p_err(data->file1, ": No such file or directory");
+	else if (access(data->file1, W_OK) == -1)
+		p_err("permission denied: ", data->file1);
 	if (access(data->file2, W_OK) == -1)
 		p_err("permission denied: ", data->file2);
 	if (pipe(data->pfd) == -1)
@@ -54,8 +59,12 @@ int		open_fds(t_data *data)
 
 int		exec_child(t_data *data)
 {
+	if (data->file2_fd == -1)
+		return (-1);
 	close(data->pfd[0]);
 	if ((dup2(data->pfd[1], 1)) == -1)
+		return (-1);
+	if ((dup2(data->file1_fd, 0)) == -1)
 		return (-1);
 	close(data->pfd[1]);
 	if ((ft_exec(data, data->cmd1)) == -1)

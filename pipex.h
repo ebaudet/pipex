@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 16:13:18 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 18:03:25 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/31 19:33:58 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_data
 	int			pfd[2];
 	int			pid;
 	char		**env;
+	int			file1_fd;
 	int			file2_fd;
 }				t_data;
 
@@ -65,10 +66,9 @@ void	ft_putstr_err(char const *s);
 char	**ft_strsplit(char const *s, char c);
 
 /*
-** main.c
+** init_data.c
 */
 int		init_data(int ac, char const *av[], char **env, t_data *data);
-int		add_file1_to_cmd1(t_data *data);
 
 /*
 ** main.c
