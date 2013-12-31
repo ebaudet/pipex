@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 16:13:18 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 01:48:37 by apieropa         ###   ########.fr       */
+/*   Updated: 2013/12/31 13:44:02 by apieropa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,9 @@ typedef struct	s_data
 	int			pfd[2];
 	int			pid;
 	char		**env;
+	int			file2_fd;
 }				t_data;
 
-/*
-** A enlever
-*/
-# include <stdio.h>
 /*
 ** xenv.c
 */
@@ -57,20 +54,27 @@ char	*ft_strjoin(char const *s1, char const *s2);
 /*
 ** function2.c
 */
-void	p_err(char *s1, char *s2, int error);
+void	p_err(char *s1, char *s2);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_putstr(char const *s);
 
 /*
 ** ft_strsplit.c
 */
-char		**ft_strsplit(char const *s, char c);
+char	**ft_strsplit(char const *s, char c);
 
 /*
 ** main.c
 */
+int		init_data(int ac, char const *av[], char **env, t_data *data);
+int		add_file1_to_cmd1(t_data *data);
+
+/*
+** main.c
+*/
+int		open_fds(t_data *data);
+int		exec_child(t_data *data);
+int		exec_parent(t_data *data);
 int		ft_exec(t_data *data, char **cmd);
-void	init_data(int ac, char const *av[], char **env, t_data *data);
-void	add_file1_to_cmd1(t_data *data);
 
 #endif
