@@ -48,9 +48,9 @@ int		open_fds(t_data *data)
 	if (access(data->file1, F_OK) == -1)
 		p_err(data->file1, ": No such file or directory");
 	else if (access(data->file1, W_OK) == -1)
-		p_err("permission denied: ", data->file1);
+		p_err(data->file1, ": Permission denied");
 	if (access(data->file2, W_OK) == -1)
-		p_err("permission denied: ", data->file2);
+		p_err(data->file2, ": Permission denied");
 	if (pipe(data->pfd) == -1)
 	{
 		ft_putstr_err("pipe failed\n");
