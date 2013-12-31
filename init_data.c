@@ -6,7 +6,7 @@
 /*   By: apieropa <apieropa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/31 12:10:45 by apieropa          #+#    #+#             */
-/*   Updated: 2013/12/31 19:33:25 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/31 20:07:20 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,11 @@ int		init_data(int ac, char const *av[], char **env, t_data *data)
 		return (-1);
 	data->env = env;
 	return (0);
+}
+
+void	usage_fct(char *pgm_name)
+{
+	ft_putstr_err("usage: ");
+	ft_putstr_err(pgm_name);
+	ft_putstr_err(" file1 cmd1 cmd2 file2\n");
 }

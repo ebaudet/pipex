@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 13:48:12 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 19:32:03 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/31 20:07:27 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int		main(int ac, char const *av[])
 				return (-1);
 		}
 	}
+	else
+		usage_fct((char *)av[0]);
 	return (0);
 }
 

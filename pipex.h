@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/30 16:13:18 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/31 19:33:58 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/31 20:07:42 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	**ft_strsplit(char const *s, char c);
 ** init_data.c
 */
 int		init_data(int ac, char const *av[], char **env, t_data *data);
+void	usage_fct(char *pgm_name);
 
 /*
 ** main.c
